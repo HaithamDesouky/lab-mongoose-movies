@@ -1,0 +1,12 @@
+<h1>Movies page</h1>
+
+{{#each movieData}}
+
+<h3>{{name}}</h3>
+<a href="/movies/{{id}}"> Read more</a>
+<form method="POST" action="/moevies/{{id}}/delete"> <button>Delete</button></form>
+
+{{/each}}
+
+
+<a href="/movies/create"> Create a movie!</a>

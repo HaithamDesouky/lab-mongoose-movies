@@ -1,8 +1,6 @@
 require('dotenv').config();
-
 const mongoose = require('mongoose');
 const app = require('./app');
-
 const MONGODB_URI = process.env.MONGODB_URI;
 const PORT = process.env.PORT;
 
@@ -32,5 +30,8 @@ mongoose
     });
   })
   .catch(error => {
-    console.error(`There was an error connecting the database to URI "${URI}"`, error);
+    console.error(
+      `There was an error connecting the database to URI "${URI}"`,
+      error
+    );
   });
