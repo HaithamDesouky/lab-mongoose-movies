@@ -32,6 +32,45 @@ moviesRouter.post('/create', (request, response, next) => {
     });
 });
 
+moviesRouter.get('/:id/edit', (request, response, next) => {
+  const id = request.params.id;
+  Movie.findById(id)
+    .then(movie => {
+      response.render('../views/movies/edit.hbs', { movie });
+    })
+    .catch(error => {
+      next(error);
+    });
+});
+
+moviesRouter.post('/:id/edit', (request, response, next) => {
+  const id = request.params.id;
+  const data = request.body;
+  Movie.findByIdAndUpdate(id, {
+    name: data.name,
+    genre: data.genre,
+    plot: data.plot
+  })
+    .then(() => {
+      response.redirect('/movies');
+    })
+    .catch(error => {
+      next(error);
+    });
+});
+
+moviesRouter.post('/:id/delete', (request, response, next) => {
+  const id = request.params.id;
+  console.log(id);
+  Movie.findByIdAndDelete(id)
+    .then(() => {
+      response.redirect('/movies');
+    })
+    .catch(error => {
+      next(error);
+    });
+});
+
 moviesRouter.get('/:id', (request, response, next) => {
   const id = request.params.id;
 

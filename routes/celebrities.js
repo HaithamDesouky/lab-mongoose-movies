@@ -88,5 +88,7 @@ celebRouter.get('/:id', (request, response, next) => {
     });
 });
 
+
+
 celebRouter.get('/');
 module.exports = celebRouter;
